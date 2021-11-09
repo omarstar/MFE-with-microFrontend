@@ -1,10 +1,10 @@
 import { arrBlogs } from "../constants";
 import { Link } from "react-router-dom";
 
-const Blog = () => {
+const Blogs = () => {
   console.log("blog reached!");
   return (
-    <div className="container mt-5 border border-primary">
+    <main className="container mt-5 border border-primary">
       <div className="row">
         {arrBlogs.map((blog, index) => {
           return (
@@ -27,8 +27,8 @@ const Blog = () => {
           );
         })}
       </div>
-    </div>
+    </main>
   );
 };
 
-export default Blog;
+export default Blogs;

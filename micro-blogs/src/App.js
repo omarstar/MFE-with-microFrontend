@@ -1,21 +1,30 @@
 import "./App.css";
-import { createBrowserHistory } from "history";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Blog from "./components/Blog";
 import BlogDetail from "./components/BlogDetail";
+import Blogs from "./routes/blogs";
 
 const defaultHistory = createBrowserHistory();
 
 function App({ history = defaultHistory }) {
   return (
-    <Blog />
-    // <Router>
-    //   <Routes>
-    //     <Route exact path="/" component={Blog} />
-    //     <Route exact path="/blogdetail/:blogid" component={BlogDetail} />
-    //   </Routes>
-    // </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" elememt={<Blogs />} />
+        <Route exact path="blog" elememt={<Blog />} />
+        <Route exact path="blogdetail/:blogid" element={<BlogDetail />} />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem", color: "red" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
